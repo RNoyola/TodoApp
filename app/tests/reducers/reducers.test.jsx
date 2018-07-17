@@ -26,6 +26,31 @@ describe('Reducers', () =>{
     });
   });
 
+  describe('authReducer', () => {
+    it('should add the uid', () => {
+      const action = {
+        type: 'LOGIN',
+        uid: '12a3s'
+      }
+      const auth = {
+        uid: '12a3s'
+      }
+      const res = reducers.authReducer(df({}), df(action))
+      expect(res).toEqual(auth)
+    })
+
+    it('should remove uid on LOGOUT', () =>{
+      const action = {
+        type: 'LOGOUT'
+      }
+      const auth = {
+        uid: '12a3s'
+      }
+      const res = reducers.authReducer(df(auth), df(action))
+      expect(res).toEqual({})
+    })
+  });
+
   describe('todosReducer', () => {
     it('should add new todo', () => {
       var action = {

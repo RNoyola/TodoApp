@@ -33,14 +33,6 @@ export var todosReducer = (state = [], action) => {
             ...todo,
             ...action.updates
           }
-          // var nextCompleted = !todo.completed;
-          // return {
-          //   ...todo,
-          //   completed: nextCompleted,
-          //   completedAt: nextCompleted ? moment().unix() : undefined
-          // }
-          // // todo.completed = nextCompleted;
-          // // todo.completedAt = nextCompleted ? moment().unix() : undefined;
         }
         return todo;
       });
@@ -49,6 +41,20 @@ export var todosReducer = (state = [], action) => {
         ...state,
         ...action.todos
       ]
+    default:
+      return state;
+  }
+};
+
+export var authReducer = (state = {}, action) => {
+  switch (action.type) {
+    case 'LOGIN':
+      return {
+          uid: action.uid
+      }
+      case 'LOGOUT':
+        return {
+        }
     default:
       return state;
   }
