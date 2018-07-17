@@ -1,63 +1,23 @@
-var React = require('react')
-var uuid = require('uuid')
-var moment = require('moment')
+import React from 'react'
+import * as Redux from 'react-redux'
 
-// var TodoList = require('TodoList')
 import TodoList from 'TodoList'
-// var AddTodo = require('AddTodo')
 import AddTodo from 'AddTodo'
-// var TodoSearch = require('TodoSearch')
 import TodoSearch from 'TodoSearch'
-// var TodoAPI = require('TodoAPI')
+import * as actions from 'actions'
+export var TodoApp = React.createClass({
+  onLogout(e) {
+    var {dispatch} = this.props;
+    e.preventDefault();
 
-var TodoApp = React.createClass({
-// getInitialState:function (){
-//     return {
-//       showCompleted: false,
-//       searchText: '',
-//       todos: TodoAPI.getTodos()
-//     }
-//   },
-  // componentDidUpdate: function (){
-  //   TodoAPI.setTodos(this.state.todos)
-  // },
-  // handleAddTodo: function (text){
-  //   this.setState({
-  //     todos: [
-  //       ...this.state.todos,
-  //       {
-  //         id: uuid(),
-  //         text: text,
-  //         completed:false,
-  //         createdAt: moment().unix(),
-  //         completedAt: undefined
-  //       }
-  //     ]
-  //   })
-  // },
-  // handleSearch:function (showCompleted, searchText){
-  //   this.setState({
-  //     showCompleted: showCompleted,
-  //     searchText: searchText.toLowerCase()
-  //   })
-  // },
-  // handleToggle: function (id){
-  //   var updatedTodos = this.state.todos.map((todo)=>{
-  //     if(todo.id === id){
-  //       todo.completed = !todo.completed
-  //       todo.completedAt = todo.completed ? moment().unix() : undefined
-  //     }
-  //     return todo
-  //   })
-  //   this.setState({todos: updatedTodos})
-  // },
+    dispatch(actions.startLogout())
+
+  },
   render: function (){
-    // var {todos, showCompleted, searchText} = this.state
-    // var filteredTodos = TodoAPI.filterTodos(todos,showCompleted, searchText)
-    return (
+      return (
       <div>
         <div className="page-actions">
-          <a href="#">Logout</a>
+          <a href="#" onClick={this.onLogout}>Logout</a>
         </div>
         <h1 className="page-title">Todo App</h1>
         <div className="row">
@@ -74,4 +34,4 @@ var TodoApp = React.createClass({
   }
 })
 
-module.exports = TodoApp
+export default Redux.connect()(TodoApp)
