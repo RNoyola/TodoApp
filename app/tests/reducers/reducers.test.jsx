@@ -114,5 +114,23 @@ describe('Reducers', () =>{
       expect(res[0]).toEqual(todos[0])
     })
 
+    it('should remove existing todos on LOGOUT', () => {
+      var todos = [{
+        id: 111,
+        text: 'shit',
+        completed:false,
+        createdAt: 4531523,
+        completedAt: undefined
+      }]
+      var action = {
+          type: 'LOGOUT'
+      };
+
+      var res = reducers.todosReducer(df(todos), df(action))
+
+      expect(res).toEqual([])
+
+    })
+
   });
 });

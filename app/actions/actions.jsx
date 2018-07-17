@@ -42,6 +42,12 @@ export var addTodos =  (todos) => {
   }
 }
 
+// export var clearTodos =  () => {
+//   return {
+//     type: 'CLEAR_TODOS'
+//   }
+// }
+
 export var startAddTodos = () => {
   return (dispatch, getState) => {
     var uid = getState().auth.uid;
